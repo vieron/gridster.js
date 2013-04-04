@@ -647,11 +647,9 @@
             offset_left: this.options.widget_margins[0],
             container_width: this.container_width,
             start: function(event, ui) {
-                // Ignore drag start if mouse was released outside screen on a previous drag
-                if (self.dragging) {
-                    return;
-                }
-
+                /* Ignore drag start if mouse was released outside screen
+                 * on a previous drag */
+                if (self.dragging) { return; }
                 self.dragging = true;
 
                 self.$widgets.filter('.player-revert')
@@ -1734,10 +1732,14 @@
     * @return {Class} Returns the instance of the Gridster Class.
     */
     fn.move_widget_down = function($widget, y_units) {
-        var el_grid_data = $widget.coords().grid;
-        var actual_row = el_grid_data.row;
-        var moved = [];
-        var y_diff = y_units;
+        var el_grid_data, actual_row, moved, y_diff;
+
+        if (y_units <= 0) { return false; }
+
+        el_grid_data = $widget.coords().grid;
+        actual_row = el_grid_data.row;
+        moved = [];
+        y_diff = y_units;
 
         if (!$widget) { return false; }
 
