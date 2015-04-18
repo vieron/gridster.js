@@ -8,6 +8,7 @@
     "name": "ducksboard",
     "email": "hackers@ducksboard.com"
   },
+  "main": "src/jquery.gridster.js",
   "repository": {
     "type": "git",
     "url": "git://github.com/ducksboard/gridster.js.git"
@@ -54,6 +55,6 @@
     ]
   },
   "browserify-shim": {
-    "jquery": "global:$"
+    "jquery": "$"
   }
 }
